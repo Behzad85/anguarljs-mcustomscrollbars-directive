@@ -1,13 +1,16 @@
 ﻿app.directive('scrollBars', function () {
     return {
         restrict: 'A',
-        scope: { theme: "@", position: "@",autoHide:"@" },
+        scope: { theme: "@", position: "@",autoHide:"@",axis:"@" },
         link: function (scope, element, attrs) {
             if (!scope.autoHide) {
                 scope.autoHide = true;
             }
+            if(!scope.axis){
+                scope.axis = 'y';
+            }
             element.mCustomScrollbar({
-                axis: "y",
+                axis: scope.axis,
                 theme: scope.theme,
                 scrollInertia: 200,
                 autoDraggerLength: true,
@@ -18,26 +21,6 @@
                 keyboard: { enable: true },
                 mouseWheel: { preventDefault: false },
                 advanced: { autoScrollOnFocus: false }
-            });
-        }
-    };
-});
-app.directive('scrollBarsX', function () {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            element.mCustomScrollbar({
-                theme: "light-thin",
-                suppressScrollY: true,
-                scrollInertia: 200,
-                axis: 'x',
-                autoDraggerLength: true,
-                autoExpandScrollbar: true,
-                contentTouchScroll: true,
-                scrollbarPosition: 'inside',
-                keyboard: { enable: true },
-                advanced:{ autoScrollOnFocus: false },
-                mouseWheel: { preventDefault: true }
             });
         }
     };
