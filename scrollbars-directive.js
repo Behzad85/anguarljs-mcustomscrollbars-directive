@@ -19,7 +19,6 @@
                 mouseWheel: { preventDefault: false },
                 advanced: { autoScrollOnFocus: false }
             });
-            console.log("Theme : " + scope.theme + " Position : " + scope.position + " AutoHide : " + scope.autoHide);
         }
     };
 });
